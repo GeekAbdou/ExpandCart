@@ -19,7 +19,7 @@ const Categories = () => {
   return (
     <Container>
       <Row>
-        {loading && <p>Loading...</p>}
+        {loading === "pending" && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
         {records.map((category) => (
           <Col

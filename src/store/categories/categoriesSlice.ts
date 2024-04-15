@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ResponseType } from "@/types";
 import { actGetCategories } from "@/store/categories/actions/actGetCategories";
+import { categoryResponseType } from "@/types";
 
-const initialState: ResponseType = {
+const initialState: categoryResponseType = {
   records: [],
   loading: "idle",
   error: null,
