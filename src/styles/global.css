@@ -1,3 +1,7 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
 .notFound {
   padding-top: 15%;
   text-align: center;

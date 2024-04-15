@@ -16,7 +16,7 @@ export type productType = {
 export type loadingType = "idle" | "pending" | "succeeded" | "failed";
 
 export type ResponseType = {
-  records: productType[];
+  records: categoryType[];
   loading: "idle" | "pending" | "succeeded" | "failed";
   error: string | null;
 };

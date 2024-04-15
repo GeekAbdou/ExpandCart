@@ -1,4 +1,4 @@
-.category {
+.categoryContainer {
   width: 180px;
   height: 180px;
 }
@@ -14,6 +14,10 @@
 
 .categoryTitle {
   text-align: center;
-  font-size: 14px;
+  font-size: 18px;
   margin-top: 10px;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  color: #2a2a2a;
+  text-transform: capitalize;
 }

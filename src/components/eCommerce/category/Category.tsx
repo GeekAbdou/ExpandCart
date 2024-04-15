@@ -1,17 +1,24 @@
+import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-const { category, categoryImg, categoryTitle } = styles;
+import { categoryType } from "@/types";
 
-const Category = () => {
+const { categoryContainer, categoryImg, categoryTitle } = styles;
+
+interface Props {
+  categoryData: categoryType;
+}
+
+const Category = ({ categoryData }: Props) => {
   return (
-    <div className={category}>
+    <Link
+      className={categoryContainer}
+      to={`/categories/products/${categoryData.prefix}`}
+    >
       <div className={categoryImg}>
-        <img
-          src="https://cdn-eu.dynamicyield.com/api/9876644/images/244c68ad42d8b__hp-w12-22032022-h_m-women_shirts-blouses.jpg"
-          alt=""
-        />
+        <img src={categoryData.img} alt={categoryData.title} />
       </div>
-      <h4 className={categoryTitle}>Title</h4>
-    </div>
+      <h4 className={categoryTitle}>{categoryData.title}</h4>
+    </Link>
   );
 };
 
