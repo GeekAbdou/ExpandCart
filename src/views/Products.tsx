@@ -26,8 +26,8 @@ const Products = () => {
 
   return (
     <Loading loading={loading} error={error}>
-      <GridList<productType>
-        items={records}
+      <GridList
+        records={records}
         renderItem={(product) => (
           <Product key={product.id} ProductData={product} />
         )}

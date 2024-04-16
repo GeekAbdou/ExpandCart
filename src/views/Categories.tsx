@@ -22,8 +22,8 @@ const Categories = () => {
 
   return (
     <Loading loading={loading} error={error}>
-      <GridList<categoryType>
-        items={records}
+      <GridList
+        records={records}
         renderItem={(category) => (
           <Category key={category.id} categoryData={category} />
         )}

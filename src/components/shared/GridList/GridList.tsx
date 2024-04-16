@@ -1,23 +1,27 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-interface GridListProps<T> {
-  items: T[];
+type GridListProps<T> = {
+  records: T[];
   renderItem: (item: T) => React.ReactNode;
-}
+};
+type hasID = { id?: number };
 
-const GridList = <T,>({ items, renderItem }: GridListProps<T>) => {
+const GridList = <T extends hasID>({
+  records,
+  renderItem,
+}: GridListProps<T>) => {
   return (
     <Container>
       <Row>
-        {items.map((item, index) => (
+        {records.map((record) => (
           <Col
-            key={index}
+            key={record.id}
             xs={6}
             md={3}
             className="d-flex justify-content-center mb-5 mt-2"
           >
-            {renderItem(item)}
+            {renderItem(record)}
           </Col>
         ))}
       </Row>
