@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { productType } from "@/types";
+import { RootState } from "@/store/";
 
 type cartStateType = {
   item: { [key: string]: number }; // index signature
@@ -25,9 +26,10 @@ const cartSlice = createSlice({
   },
 });
 
-const getCartTotalItems = (state) => {
-  return Object.values(state).reduce((acc, item) => acc + item, 0);
-};
+const getCartTotalItems = createSelector(
+  (state: RootState) => state.cart.item,
+  (item) => Object.values(item).reduce((acc, curr) => acc + curr, 0)
+);
 
 // Export an object containing both the action creator and the reducer
 export const { addToCart } = cartSlice.actions;
