@@ -11,7 +11,13 @@ const initialState: productResponseType = {
 const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    productsClearState: (state) => {
+      state.records = [];
+      state.loading = "idle";
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(actGetProductsByCatPrefix.pending, (state) => {
       state.loading = "pending";
@@ -29,8 +35,7 @@ const productSlice = createSlice({
 });
 
 // Export an object containing both the action creator and the reducer
-export const productActions = {
-  actGetProductsByCatPrefix,
-};
 
+export const { productsClearState } = productSlice.actions;
+export { actGetProductsByCatPrefix };
 export default productSlice.reducer;

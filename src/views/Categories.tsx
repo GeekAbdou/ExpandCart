@@ -1,8 +1,10 @@
-import { Container, Row, Col } from "react-bootstrap";
-import { Category } from "@/components/eCommerce";
 import { useEffect } from "react";
+import { Category } from "@/components/eCommerce";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { actGetCategories } from "@/store/categories/actions/actGetCategories";
+import GridList from "@/components/shared/GridList/GridList";
+import { categoryType } from "@/types";
+import Loading from "@/components/shared/Loader/Loader";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
@@ -13,26 +15,20 @@ const Categories = () => {
   );
 
   useEffect(() => {
-    dispatch(actGetCategories());
-  }, [dispatch]);
+    if (!records.length) {
+      dispatch(actGetCategories());
+    }
+  }, [dispatch, records.length]);
 
   return (
-    <Container>
-      <Row>
-        {loading === "pending" && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
-        {records.map((category) => (
-          <Col
-            key={category.id}
-            xs={6}
-            md={3}
-            className="d-flex justify-content-center mb-5 mt-2"
-          >
-            <Category categoryData={category} />
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <Loading loading={loading} error={error}>
+      <GridList<categoryType>
+        items={records}
+        renderItem={(category) => (
+          <Category key={category.id} categoryData={category} />
+        )}
+      />
+    </Loading>
   );
 };
 
