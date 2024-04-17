@@ -7,6 +7,7 @@ import AppRouter from "@/routes/AppRouter";
 import "@/styles/normalize.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@/styles/global.css";
+import "@/services/axiosGlobalConfig.js";
 
 const rootElement = document.getElementById("root");
 
