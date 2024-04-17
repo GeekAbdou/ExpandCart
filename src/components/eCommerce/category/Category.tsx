@@ -4,11 +4,11 @@ import { categoryType } from "@/types";
 
 const { categoryContainer, categoryImg, categoryTitle } = styles;
 
-interface Props {
+interface CategoryProps {
   categoryData: categoryType;
 }
 
-const Category = ({ categoryData }: Props) => {
+const Category = ({ categoryData }: CategoryProps) => {
   return (
     <Link
       className={categoryContainer}

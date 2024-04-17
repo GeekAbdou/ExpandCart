@@ -11,6 +11,8 @@ export type productType = {
   price: string;
   cat_prefix?: string;
   img: string;
+  max: number;
+  quantity?: number;
 };
 
 export type loadingType = "idle" | "pending" | "succeeded" | "failed";

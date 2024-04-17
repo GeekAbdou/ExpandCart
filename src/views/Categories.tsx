@@ -3,8 +3,8 @@ import { Category } from "@/components/eCommerce";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { actGetCategories } from "@/store/categories/actions/actGetCategories";
 import GridList from "@/components/shared/GridList/GridList";
-import { categoryType } from "@/types";
 import Loading from "@/components/shared/Loader/Loader";
+import { categoryType } from "@/types";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
@@ -22,7 +22,7 @@ const Categories = () => {
 
   return (
     <Loading loading={loading} error={error}>
-      <GridList
+      <GridList<categoryType>
         records={records}
         renderItem={(category) => (
           <Category key={category.id} categoryData={category} />

@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { productType } from "@/types";
 
 type cartStateType = {
-  item: { [key: string]: number }; // index signature
+  items: { [key: string]: number }; // index signature
   productFullInfo: productType[];
 };
 const initialState: cartStateType = {
-  item: {},
+  items: {},
   productFullInfo: [],
 };
 
@@ -16,10 +16,10 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const id = action.payload;
-      if (state.item[id]) {
-        state.item[id]++;
+      if (state.items[id]) {
+        state.items[id]++;
       } else {
-        state.item[id] = 1;
+        state.items[id] = 1;
       }
     },
   },

@@ -6,9 +6,9 @@ import {
   productsClearState,
 } from "@/store/products/productsSlice";
 import { useParams } from "react-router-dom";
-import { productType } from "@/types";
 import Loading from "@/components/shared/Loader/Loader";
 import GridList from "@/components/shared/GridList/GridList";
+import { productType } from "@/types";
 
 const Products = () => {
   const params = useParams<{ prefix: string }>();
@@ -16,6 +16,13 @@ const Products = () => {
 
   // Fetch products from the store
   const { loading, error, records } = useAppSelector((state) => state.products);
+  const cartItems = useAppSelector((state) => state.cart.items);
+  const productInfo = records.map((product) => {
+    return {
+      ...product,
+      quantity: cartItems[product.id] || 0,
+    };
+  });
 
   useEffect(() => {
     dispatch(actGetProductsByCatPrefix(params.prefix as string));
@@ -26,10 +33,10 @@ const Products = () => {
 
   return (
     <Loading loading={loading} error={error}>
-      <GridList
-        records={records}
-        renderItem={(product) => (
-          <Product key={product.id} ProductData={product} />
+      <GridList<productType>
+        records={productInfo}
+        renderItem={(productInfo) => (
+          <Product key={productInfo.id} productData={productInfo} />
         )}
       />
     </Loading>

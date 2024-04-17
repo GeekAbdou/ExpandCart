@@ -1,40 +1,67 @@
-import { Button } from "react-bootstrap";
-import styles from "./styles.module.css";
-const { productContainer, productImg } = styles;
-import { productType } from "@/types";
-import { Link } from "react-router-dom";
+import { useEffect, useState, memo } from "react";
 import { useAppDispatch } from "@/store/hooks";
 import { addToCart } from "@/store/cart/cartSlice";
+import { Button, Spinner } from "react-bootstrap";
+import { productType } from "@/types";
+import styles from "./styles.module.css";
 
-interface Props {
-  ProductData: productType;
+interface ProductProps {
+  productData: productType;
 }
 
-const Product = ({ ProductData }: Props) => {
+const Product: React.FC<ProductProps> = memo(({ productData }) => {
   const dispatch = useAppDispatch();
+  const [isBtnDisabled, setIsBtnDisabled] = useState(false);
+
+  const currentRemainingQuantity =
+    productData.max - (productData.quantity ?? 0);
+  const quantityReachedToMax = currentRemainingQuantity <= 0 ? true : false;
+
+  useEffect(() => {
+    if (!isBtnDisabled) {
+      return;
+    }
+
+    const debounce = setTimeout(() => {
+      setIsBtnDisabled(false);
+    }, 300);
+
+    return () => clearTimeout(debounce);
+  }, [isBtnDisabled]);
+
   const addToCartHandler = () => {
-    dispatch(addToCart(ProductData.id));
+    dispatch(addToCart(productData.id));
+    setIsBtnDisabled(true);
   };
 
   return (
-    <Link
-      className={productContainer}
-      to={`/categories/products/${ProductData.cat_prefix}`}
-    >
-      <div className={productImg}>
-        <img src={ProductData.img} alt={ProductData.title} />
+    <div className={styles.product}>
+      <div className={styles.productImg}>
+        <img src={productData.img} alt={productData.title} />
       </div>
-      <h6>{ProductData.title}</h6>
-      <h3>{ProductData.price}</h3>
+      <h2>{productData.title}</h2>
+      <h3>{productData.price} EGP</h3>
+      <p className={styles.maximumNotice}>
+        {quantityReachedToMax
+          ? "You reach to the limit"
+          : `You can add ${currentRemainingQuantity} item(s)`}
+      </p>
       <Button
         variant="info"
         style={{ color: "white" }}
         onClick={addToCartHandler}
+        disabled={isBtnDisabled || quantityReachedToMax}
       >
-        Add to cart
+        {isBtnDisabled ? (
+          <>
+            <Spinner animation="border" size="sm" /> Loading...
+          </>
+        ) : (
+          "Add to cart"
+        )}
       </Button>
-    </Link>
+    </div>
   );
-};
+});
 
 export default Product;
