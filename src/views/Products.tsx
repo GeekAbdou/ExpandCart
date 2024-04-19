@@ -6,8 +6,7 @@ import {
   productsClearState,
 } from "@/store/products/productsSlice";
 import { useParams } from "react-router-dom";
-import Loading from "@/components/shared/Loader/Loader";
-import GridList from "@/components/shared/GridList/GridList";
+import { GridList, Heading, Loader } from "@/components/shared/index";
 import { productType } from "@/types";
 
 const Products = () => {
@@ -32,14 +31,15 @@ const Products = () => {
   }, [dispatch, params.prefix]);
 
   return (
-    <Loading loading={loading} error={error}>
+    <Loader status={loading} error={error}>
+      <Heading children={<h1>Products</h1>} />
       <GridList<productType>
         records={productInfo}
         renderItem={(productInfo) => (
           <Product key={productInfo.id} productData={productInfo} />
         )}
       />
-    </Loading>
+    </Loader>
   );
 };
 

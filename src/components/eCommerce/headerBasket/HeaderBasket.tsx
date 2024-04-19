@@ -4,6 +4,7 @@ import { getCartTotalItemsSelector } from "@/store/selectors";
 import Logo from "@/assets/svg/cart.svg?react";
 
 import styles from "./styles.module.css";
+import { Link } from "react-router-dom";
 const { basketContainer, basketQuantity, pumpCartQuantity, basketCart } =
   styles;
 
@@ -27,13 +28,19 @@ const HeaderBasket = () => {
     return () => clearTimeout(debounce);
   }, [totalQuantity]);
 
+  /*useEffect(() => {
+    dispatch(getProductsFullInfo());
+  }, [dispatch]);*/
+
   return (
     <div className={basketContainer}>
       <div className={basketCart}>
         <Logo title="basket icon" />
         <div className={quantityStyle}>{totalQuantity}</div>
       </div>
-      <h3>Cart</h3>
+      <Link to="/cart">
+        <h3>Cart</h3>
+      </Link>
     </div>
   );
 };

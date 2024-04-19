@@ -1,13 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { productType } from "@/types";
+import actGetProductsByIDs from "./actions/actGetProductsByIDs";
+import { productType, loadingType } from "@/types";
 
 type cartStateType = {
-  items: { [key: string]: number }; // index signature
-  productFullInfo: productType[];
+  items: { [key: string]: number };
+  productsFullInfo: productType[];
+  loading: loadingType;
+  error: null | string;
 };
+
 const initialState: cartStateType = {
   items: {},
-  productFullInfo: [],
+  productsFullInfo: [],
+  loading: "idle",
+  error: null,
 };
 
 const cartSlice = createSlice({
@@ -23,8 +29,25 @@ const cartSlice = createSlice({
       }
     },
   },
+
+  extraReducers: (builder) => {
+    builder.addCase(actGetProductsByIDs.pending, (state) => {
+      state.loading = "pending";
+      state.error = null;
+    });
+    builder.addCase(actGetProductsByIDs.fulfilled, (state, action) => {
+      state.loading = "succeeded";
+      state.productsFullInfo = action.payload;
+    });
+    builder.addCase(actGetProductsByIDs.rejected, (state, action) => {
+      state.loading = "failed";
+      if (action.payload && typeof action.payload === "string") {
+        state.error = action.payload;
+      }
+    });
+  },
 });
 
-// Export an object containing both the action creator and the reducer
+export { actGetProductsByIDs };
 export const { addToCart } = cartSlice.actions;
 export default cartSlice.reducer;

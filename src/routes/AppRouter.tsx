@@ -2,13 +2,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // layouts
 import MainLayout from "@/templates/MainLayout/MainLayout";
 // pages
-import Home from "@/views/Home";
-import Categories from "@/views/Categories";
-import Products from "@/views/Products";
-import AboutUs from "@/views/AboutUs";
-import Login from "@/views/Login";
-import Register from "@/views/Register";
-import Error from "@/views/Error";
+import {
+  AboutUs,
+  Categories,
+  Error,
+  Home,
+  Login,
+  Products,
+  Register,
+  Cart,
+} from "@/views/index";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
     ],
   },

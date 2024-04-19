@@ -4,12 +4,12 @@ import styles from "./styles.module.css";
 const { centeredSpinner } = styles;
 
 type LoadingProps = {
-  loading: loadingType;
+  status: loadingType;
   error: null | string;
-  children: React.ReactElement;
+  children: React.ReactNode;
 };
-const Loading = ({ loading, error, children }: LoadingProps) => {
-  if (loading === "pending") {
+const Loader = ({ status, error, children }: LoadingProps) => {
+  if (status === "pending") {
     return (
       <div className={centeredSpinner}>
         <ThreeCircles
@@ -24,10 +24,10 @@ const Loading = ({ loading, error, children }: LoadingProps) => {
       </div>
     );
   }
-  if (loading === "failed") {
+  if (status === "failed") {
     return <div className={centeredSpinner}>{error}</div>;
   }
   return <div>{children}</div>;
 };
 
-export default Loading;
+export default Loader;

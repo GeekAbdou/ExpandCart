@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { Category } from "@/components/eCommerce";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { actGetCategories } from "@/store/categories/actions/actGetCategories";
-import GridList from "@/components/shared/GridList/GridList";
-import Loading from "@/components/shared/Loader/Loader";
+import { GridList, Heading, Loader } from "@/components/shared/index";
 import { categoryType } from "@/types";
 
 const Categories = () => {
@@ -21,14 +20,15 @@ const Categories = () => {
   }, [dispatch, records.length]);
 
   return (
-    <Loading loading={loading} error={error}>
+    <Loader status={loading} error={error}>
+      <Heading children={<h1>Categories</h1>} />
       <GridList<categoryType>
         records={records}
         renderItem={(category) => (
           <Category key={category.id} categoryData={category} />
         )}
       />
-    </Loading>
+    </Loader>
   );
 };
 
