@@ -28,7 +28,9 @@ const cartSlice = createSlice({
         state.items[id] = 1;
       }
     },
-
+    cleanUpCartProductsFullInfo: (state) => {
+      state.productsFullInfo = [];
+    },
     changeItemQuantity: (state, action) => {
       const { id, quantity } = action.payload;
       state.items[id] = quantity;
@@ -62,6 +64,10 @@ const cartSlice = createSlice({
 });
 
 export { actGetProductsByIDs };
-export const { addToCart, changeItemQuantity, cartItemRemove } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  changeItemQuantity,
+  cartItemRemove,
+  cleanUpCartProductsFullInfo,
+} = cartSlice.actions;
 export default cartSlice.reducer;

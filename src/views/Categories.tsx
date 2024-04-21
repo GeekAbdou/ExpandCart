@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { actGetCategories } from "@/store/categories/actions/actGetCategories";
 import { GridList, Heading, Loader } from "@/components/shared/index";
 import { categoryType } from "@/types";
-
+import { CleanUpCategoriesRecords } from "@/store/categories/categoriesSlice";
 const Categories = () => {
   const dispatch = useAppDispatch();
 
@@ -14,10 +14,12 @@ const Categories = () => {
   );
 
   useEffect(() => {
-    if (!records.length) {
-      dispatch(actGetCategories());
-    }
-  }, [dispatch, records.length]);
+    dispatch(actGetCategories());
+
+    return () => {
+      dispatch(CleanUpCategoriesRecords());
+    };
+  }, [dispatch]);
 
   return (
     <Loader status={loading} error={error}>

@@ -13,6 +13,7 @@ export type productType = {
   img: string;
   max: number;
   quantity?: number;
+  isLiked?: boolean;
 };
 
 export type loadingType = "idle" | "pending" | "succeeded" | "failed";

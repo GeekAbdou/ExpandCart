@@ -3,7 +3,11 @@ import { actGetProductsByIDs } from "@/store/cart/actions/actGetProductsByIDs";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { useCallback, useEffect } from "react"; // Import useState
 import { CartItemList, CartSubtotalPrice } from "@/components/eCommerce";
-import { cartItemRemove, changeItemQuantity } from "@/store/cart/cartSlice";
+import {
+  cartItemRemove,
+  changeItemQuantity,
+  cleanUpCartProductsFullInfo,
+} from "@/store/cart/cartSlice";
 
 function Cart() {
   const dispatch = useAppDispatch();
@@ -14,6 +18,9 @@ function Cart() {
 
   useEffect(() => {
     dispatch(actGetProductsByIDs());
+    return () => {
+      dispatch(cleanUpCartProductsFullInfo());
+    };
   }, [dispatch]);
 
   const changeItemQuantityHandler = useCallback(

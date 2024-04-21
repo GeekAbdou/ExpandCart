@@ -12,6 +12,7 @@ import {
   Register,
   Cart,
 } from "@/views/index";
+import Wishlist from "@/views/Wishlist";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: "wishlist",
+        element: <Wishlist />,
       },
     ],
   },

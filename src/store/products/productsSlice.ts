@@ -12,7 +12,7 @@ const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    productsClearState: (state) => {
+    CleanUpProductsRecords: (state) => {
       state.records = [];
       state.loading = "idle";
       state.error = null;
@@ -36,6 +36,6 @@ const productSlice = createSlice({
 
 // Export an object containing both the action creator and the reducer
 
-export const { productsClearState } = productSlice.actions;
+export const { CleanUpProductsRecords } = productSlice.actions;
 export { actGetProductsByCatPrefix };
 export default productSlice.reducer;
