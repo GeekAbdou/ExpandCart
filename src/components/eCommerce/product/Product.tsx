@@ -40,7 +40,7 @@ const Product: React.FC<ProductProps> = memo(({ productData }) => {
         <img src={productData.img} alt={productData.title} />
       </div>
       <h2>{productData.title}</h2>
-      <h3>{productData.price} EGP</h3>
+      <h3>{Number(productData.price).toFixed(2)} EGP</h3>
       <p className={styles.maximumNotice}>
         {quantityReachedToMax
           ? "You reach to the limit"

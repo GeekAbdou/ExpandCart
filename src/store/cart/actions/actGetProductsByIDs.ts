@@ -10,12 +10,14 @@ export const actGetProductsByIDs = createAsyncThunk(
     const { rejectWithValue, fulfillWithValue, getState } = thunkAPI;
     const { cart } = getState() as RootState;
     const itemsID = Object.keys(cart.items);
+    const concatenatedItemsId = itemsID.map((id) => `id=${id}`).join("&");
+
     if (!itemsID.length) {
+      // if there is no items in the cart return empty ID array
       return fulfillWithValue([]);
     }
 
     try {
-      const concatenatedItemsId = itemsID.map((id) => `id=${id}`).join("&");
       const response = await axios.get<productResponseType>(
         `/products?${concatenatedItemsId}`
       );

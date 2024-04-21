@@ -8,7 +8,7 @@ export type categoryType = {
 export type productType = {
   id: number;
   title: string;
-  price: string;
+  price: number;
   cat_prefix?: string;
   img: string;
   max: number;

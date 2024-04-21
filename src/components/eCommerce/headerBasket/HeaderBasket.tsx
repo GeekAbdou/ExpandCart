@@ -33,15 +33,13 @@ const HeaderBasket = () => {
   }, [dispatch]);*/
 
   return (
-    <div className={basketContainer}>
+    <Link to="/cart" className={basketContainer}>
       <div className={basketCart}>
         <Logo title="basket icon" />
         <div className={quantityStyle}>{totalQuantity}</div>
       </div>
-      <Link to="/cart">
-        <h3>Cart</h3>
-      </Link>
-    </div>
+      <h3>Cart</h3>
+    </Link>
   );
 };
 
