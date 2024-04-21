@@ -36,6 +36,10 @@ const cartSlice = createSlice({
     cartItemRemove: (state, action) => {
       const id = action.payload;
       delete state.items[id];
+      // This filter method will remove the product from the productsFullInfo array (veryImportant)
+      state.productsFullInfo = state.productsFullInfo.filter(
+        (product) => product.id !== id
+      );
     },
   },
 

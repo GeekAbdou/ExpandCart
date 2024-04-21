@@ -1,14 +1,12 @@
-// Cart.tsx
 import { Heading, Loader } from "@/components/shared";
 import { actGetProductsByIDs } from "@/store/cart/actions/actGetProductsByIDs";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { useEffect, useState } from "react"; // Import useState
+import { useCallback, useEffect } from "react"; // Import useState
 import { CartItemList, CartSubtotalPrice } from "@/components/eCommerce";
 import { cartItemRemove, changeItemQuantity } from "@/store/cart/cartSlice";
 
 function Cart() {
   const dispatch = useAppDispatch();
-  const [keyPrefix, setKeyPrefix] = useState(0);
 
   const { items, productsFullInfo, loading, error } = useAppSelector(
     (state) => state.cart
@@ -18,14 +16,19 @@ function Cart() {
     dispatch(actGetProductsByIDs());
   }, [dispatch]);
 
-  const changeItemQuantityHandler = (id: number, quantity: number) => {
-    dispatch(changeItemQuantity({ id, quantity }));
-  };
+  const changeItemQuantityHandler = useCallback(
+    (id: number, quantity: number) => {
+      dispatch(changeItemQuantity({ id, quantity }));
+    },
+    [dispatch]
+  );
 
-  const removeItemHandler = (id: number) => {
-    setKeyPrefix((prevPrefix) => prevPrefix + 1);
-    dispatch(cartItemRemove(id));
-  };
+  const removeItemHandler = useCallback(
+    (id: number) => {
+      dispatch(cartItemRemove(id));
+    },
+    [dispatch]
+  );
 
   const products = productsFullInfo.map((el) => ({
     ...el,
@@ -42,7 +45,6 @@ function Cart() {
               products={products}
               changeQuantityHandler={changeItemQuantityHandler}
               removeItemHandler={removeItemHandler}
-              keyPrefix={keyPrefix}
             />
             <CartSubtotalPrice products={products} />
           </>
