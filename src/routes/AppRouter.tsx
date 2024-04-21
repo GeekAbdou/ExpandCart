@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import React, { Suspense } from "react";
-
+import { PageSpinner } from "@/components/shared";
 // layouts
 import MainLayout from "@/templates/MainLayout/MainLayout";
 // pages
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<PageSpinner />}>
             <Home />
           </Suspense>
         ),
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: "categories",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<PageSpinner />}>
             <Categories />
           </Suspense>
         ),
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       {
         path: "categories/products/:prefix",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<PageSpinner />}>
             <Products />
           </Suspense>
         ),
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
       {
         path: "about-us",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<PageSpinner />}>
             <AboutUs />
           </Suspense>
         ),
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<PageSpinner />}>
             <Login />
           </Suspense>
         ),
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<PageSpinner />}>
             <Register />
           </Suspense>
         ),
@@ -83,7 +83,7 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<PageSpinner />}>
             <Cart />
           </Suspense>
         ),
@@ -91,7 +91,7 @@ const router = createBrowserRouter([
       {
         path: "wishlist",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<PageSpinner />}>
             <Wishlist />
           </Suspense>
         ),
