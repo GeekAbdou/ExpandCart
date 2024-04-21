@@ -7,9 +7,11 @@ import axiosErrorHandler from "@/utils/axiosErrorHandler";
 export const actGetCategories = createAsyncThunk(
   "categories/getCategories",
   async (_, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
+    const { rejectWithValue, signal } = thunkAPI;
     try {
-      const response = await axios.get<categoryResponseType>("/categories");
+      const response = await axios.get<categoryResponseType>("/categories", {
+        signal,
+      });
       const data = response.data;
       return data;
     } catch (error) {

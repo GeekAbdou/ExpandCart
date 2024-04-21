@@ -7,10 +7,11 @@ import axiosErrorHandler from "@/utils/axiosErrorHandler";
 export const actGetProductsByCatPrefix = createAsyncThunk(
   "products/actGetProductsByCatPrefix",
   async (prefix: string, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
+    const { rejectWithValue, signal } = thunkAPI;
     try {
       const response = await axios.get<productResponseType>(
-        `/products?cat_prefix=${prefix}`
+        `/products?cat_prefix=${prefix}`,
+        { signal }
       );
       const data = response.data;
       return data;
