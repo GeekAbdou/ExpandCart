@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { productResponseType } from "@/types";
+import { isString, productResponseType } from "@/types";
 import { actGetProductsByCatPrefix } from "@/store/products/actions/actGetProductsByCatPrefix";
 
 const initialState: productResponseType = {
@@ -29,12 +29,13 @@ const productSlice = createSlice({
     });
     builder.addCase(actGetProductsByCatPrefix.rejected, (state, action) => {
       state.loading = "failed";
-      state.error = action.error?.message || null;
+      // state.error = action.error?.message || null;
+      if (isString(action.payload)) {
+        state.error = action.payload;
+      }
     });
   },
 });
-
-// Export an object containing both the action creator and the reducer
 
 export const { CleanUpProductsRecords } = productSlice.actions;
 export { actGetProductsByCatPrefix };

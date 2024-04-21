@@ -25,7 +25,11 @@ export type categoryResponseType = {
 };
 
 export type productResponseType = {
-  records: productType[];
+  records: [];
   loading: loadingType;
   error: string | null;
 };
+
+// TS Predicate
+export const isString = (value: unknown): value is string =>
+  typeof value === "string";

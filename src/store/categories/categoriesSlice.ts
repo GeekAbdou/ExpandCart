@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { actGetCategories } from "@/store/categories/actions/actGetCategories";
-import { categoryResponseType } from "@/types";
+import { categoryResponseType, isString } from "@/types";
 
 const initialState: categoryResponseType = {
   records: [],
@@ -29,7 +29,10 @@ const categoriesSlice = createSlice({
     });
     builder.addCase(actGetCategories.rejected, (state, action) => {
       state.loading = "failed";
-      state.error = action.error?.message || null;
+      // state.error = action.error?.message || null;
+      if (isString(action.payload)) {
+        state.error = action.payload;
+      }
     });
   },
 });
