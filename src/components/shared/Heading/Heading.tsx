@@ -1,9 +1,9 @@
 import React from "react";
 
-function Heading({ children }: { children: React.ReactNode }) {
+function Heading({ title }: { title: string }) {
   return (
     <div className="mb-3" style={{ fontSize: "26px" }}>
-      {children}
+      {title}
     </div>
   );
 }

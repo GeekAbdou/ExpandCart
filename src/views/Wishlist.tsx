@@ -30,7 +30,7 @@ const Wishlist = () => {
 
   return (
     <>
-      <Heading>Your Wishlist</Heading>
+      <Heading title="Your Wishlist" />
       <Loader status={loading} error={error}>
         <GridList<productType>
           records={records}

@@ -44,7 +44,7 @@ function Cart() {
 
   return (
     <>
-      <Heading>Your Cart</Heading>
+      <Heading title="Your Cart" />
       <Loader status={loading} error={error}>
         {products.length ? (
           <>

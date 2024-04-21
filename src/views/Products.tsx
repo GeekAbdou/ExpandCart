@@ -1,5 +1,5 @@
 import { Product } from "@/components/eCommerce";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   actGetProductsByCatPrefix,
@@ -10,6 +10,7 @@ import { GridList, Heading, Loader } from "@/components/shared/index";
 import { productType } from "@/types";
 
 const Products = () => {
+  console.log("Products page rendered");
   const params = useParams<{ prefix: string }>();
   const dispatch = useAppDispatch();
   const wishListItemsId = useAppSelector((state) => state.wishlist.itemsId);
@@ -32,7 +33,7 @@ const Products = () => {
 
   return (
     <Loader status={loading} error={error}>
-      <Heading children={<h1>Products</h1>} />
+      <Heading title={`${params.prefix?.toUpperCase()} Products`} />
       <GridList<productType>
         records={productsFullInfo}
         renderItem={(productInfo) => (
