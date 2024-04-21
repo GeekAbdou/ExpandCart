@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { categoryResponseType } from "@/types";
+import axiosErrorHandler from "@/utils/axiosErrorHandler";
 
 // Async thunk to fetch categories
 export const actGetCategories = createAsyncThunk(
@@ -12,11 +13,7 @@ export const actGetCategories = createAsyncThunk(
       const data = response.data;
       return data;
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        return rejectWithValue(error.response?.data.message || error.message);
-      } else {
-        return rejectWithValue("UnExpected Error!");
-      }
+      return rejectWithValue(axiosErrorHandler(error));
     }
   }
 );

@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { productResponseType } from "@/types";
 import { RootState } from "@/store";
+import axiosErrorHandler from "@/utils/axiosErrorHandler";
 
 // Async thunk to fetch ProductsByCatPrefix
 export const actGetProductsByIDs = createAsyncThunk(
@@ -24,11 +25,7 @@ export const actGetProductsByIDs = createAsyncThunk(
       const data = response.data;
       return data;
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        return rejectWithValue(error.response?.data.message || error.message);
-      } else {
-        return rejectWithValue("UnExpected Error!");
-      }
+      return rejectWithValue(axiosErrorHandler(error));
     }
   }
 );
