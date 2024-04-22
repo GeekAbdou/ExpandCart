@@ -1,6 +1,7 @@
-import { Heading, Loader } from "@/components/shared";
+import { Heading } from "@/components/shared";
 import { CartItemList, CartSubtotalPrice } from "@/components/eCommerce";
 import useCart from "@/hooks/useCart";
+import { Loading, LottieHandler } from "@/components/shared/loadingFallbacks";
 
 const Cart = () => {
   const {
@@ -14,7 +15,7 @@ const Cart = () => {
   return (
     <>
       <Heading title="Your Cart" />
-      <Loader status={loading} error={error}>
+      <Loading status={loading} error={error} type="cart">
         {products.length ? (
           <>
             <CartItemList
@@ -25,9 +26,9 @@ const Cart = () => {
             <CartSubtotalPrice products={products} />
           </>
         ) : (
-          "Your Cart is empty"
+          <LottieHandler message="Your cart is empty" type="empty" />
         )}
-      </Loader>
+      </Loading>
     </>
   );
 };

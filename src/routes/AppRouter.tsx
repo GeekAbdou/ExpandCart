@@ -3,10 +3,12 @@ import React, { Suspense } from "react";
 import { PageSpinner } from "@/components/shared";
 // layouts
 import MainLayout from "@/templates/MainLayout/MainLayout";
+// components
+import { LottieHandler, PageSuspenseFallback } from "@/components/shared/loadingFallbacks";
 // pages
+import Error from "@/views/Error";
 const AboutUs = React.lazy(() => import("@/views/AboutUs"));
 const Categories = React.lazy(() => import("@/views/Categories"));
-const Error = React.lazy(() => import("@/views/Error"));
 const Home = React.lazy(() => import("@/views/Home"));
 const Login = React.lazy(() => import("@/views/Login"));
 const Products = React.lazy(() => import("@/views/Products"));
@@ -23,7 +25,11 @@ const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<PageSpinner />}>
+          <Suspense fallback={
+            <div style={{ marginTop: "10%" }}>
+              <LottieHandler type="loading" message="Loading please wait..." />
+            </div>
+          }>
             <Home />
           </Suspense>
         ),
@@ -59,41 +65,41 @@ const router = createBrowserRouter([
       {
         path: "about-us",
         element: (
-          <Suspense fallback={<PageSpinner />}>
+          <PageSuspenseFallback>
             <AboutUs />
-          </Suspense>
+          </PageSuspenseFallback>
         ),
       },
       {
         path: "login",
         element: (
-          <Suspense fallback={<PageSpinner />}>
+          <PageSuspenseFallback>
             <Login />
-          </Suspense>
+          </PageSuspenseFallback>
         ),
       },
       {
         path: "register",
         element: (
-          <Suspense fallback={<PageSpinner />}>
+          <PageSuspenseFallback>
             <Register />
-          </Suspense>
+          </PageSuspenseFallback>
         ),
       },
       {
         path: "cart",
         element: (
-          <Suspense fallback={<PageSpinner />}>
+          <PageSuspenseFallback>
             <Cart />
-          </Suspense>
+          </PageSuspenseFallback>
         ),
       },
       {
         path: "wishlist",
         element: (
-          <Suspense fallback={<PageSpinner />}>
+          <PageSuspenseFallback>
             <Wishlist />
-          </Suspense>
+          </PageSuspenseFallback>
         ),
       },
     ],

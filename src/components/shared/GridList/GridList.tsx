@@ -1,32 +1,32 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
+import { LottieHandler } from "../loadingFallbacks";
 
 type GridListProps<T> = {
   records: T[];
-  renderItem: (item: T) => React.ReactNode;
+  renderItem: (record: T) => React.ReactNode;
+  emptyMessage: string;
 };
-type hasID = { id?: number };
 
-const GridList = <T extends hasID>({
+const GridList = <T extends { id?: number }>({
+  emptyMessage,
   records,
   renderItem,
 }: GridListProps<T>) => {
-  return (
-    <Container>
-      <Row>
-        {records.map((record) => (
-          <Col
-            key={record.id}
-            xs={6}
-            md={3}
-            className="d-flex justify-content-center mb-5 mt-2"
-          >
-            {renderItem(record)}
-          </Col>
-        ))}
-      </Row>
-    </Container>
-  );
+  const renderList =
+    records.length > 0 ? (
+      records.map((record) => (
+        <Col
+          xs={3}
+          key={record.id}
+          className="d-flex justify-content-center mb-5 mt-2"
+        >
+          {renderItem(record)}
+        </Col>
+      ))
+    ) : (
+      <LottieHandler type="empty" message={emptyMessage} />
+    );
+  return <Row>{renderList}</Row>;
 };
 
 export default GridList;
