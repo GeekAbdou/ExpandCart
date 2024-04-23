@@ -52,7 +52,7 @@ const cartSlice = createSlice({
     });
     builder.addCase(actGetProductsByIDs.fulfilled, (state, action) => {
       state.loading = "succeeded";
-      state.productsFullInfo = action.payload;
+      state.productsFullInfo = action.payload as productType[]
     });
     builder.addCase(actGetProductsByIDs.rejected, (state, action) => {
       state.loading = "failed";

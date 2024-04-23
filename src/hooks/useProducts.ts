@@ -5,6 +5,7 @@ import {
   CleanUpProductsRecords,
 } from "@/store/products/productsSlice";
 import { useParams } from "react-router-dom";
+import { productType } from "@/types";
 
 const useProducts = () => {
   console.log("Products page rendered");
@@ -15,11 +16,12 @@ const useProducts = () => {
   // Fetch products from the store
   const { loading, error, records } = useAppSelector((state) => state.products);
   const cartItems = useAppSelector((state) => state.cart.items);
-  const productsFullInfo = records.map((el) => ({
+  const productsFullInfo = records.map((el: productType) => ({
     ...el,
     quantity: cartItems[el.id],
     isLiked: wishListItemsId.includes(el.id),
   }));
+  
 
   useEffect(() => {
     const promise = dispatch(
