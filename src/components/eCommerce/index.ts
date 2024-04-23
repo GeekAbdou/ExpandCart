@@ -3,4 +3,5 @@ import CartSubtotalPrice from "@/components/eCommerce/cart/CartSubtotalPrice/Car
 import Category from "@/components/eCommerce/Category/Category";
 import HeaderBasket from "@/components/eCommerce/HeaderBasket/HeaderBasket";
 import Product from "@/components/eCommerce/Product/Product";
+
 export { CartItemList, CartSubtotalPrice, Category, HeaderBasket, Product };

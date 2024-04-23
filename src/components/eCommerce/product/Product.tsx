@@ -13,7 +13,6 @@ interface ProductProps {
 }
 
 const Product = memo(({ productData }: ProductProps) => {
-  console.log("Product rendered");
   const dispatch = useAppDispatch();
   const [isBtnDisabled, setIsBtnDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

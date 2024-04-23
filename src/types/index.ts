@@ -18,18 +18,6 @@ export type productType = {
 
 export type loadingType = "idle" | "pending" | "succeeded" | "failed";
 
-export type categoryResponseType = {
-  records: categoryType[];
-  loading: loadingType;
-  error: string | null;
-};
-
-export type productResponseType = {
-  records: [];
-  loading: loadingType;
-  error: string | null;
-};
-
 // TS Predicate
 export const isString = (value: unknown): value is string =>
   typeof value === "string";
