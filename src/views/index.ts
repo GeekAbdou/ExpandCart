@@ -1,10 +1,10 @@
-import AboutUs from "./AboutUs";
-import Categories from "./Categories";
-import Error from "./Error";
-import Home from "./Home";
-import Login from "./Login";
-import Products from "./Products";
-import Register from "./Register";
-import Cart from "./Cart";
+import AboutUs from "@/views/AboutUs";
+import Categories from "@/views/Categories";
+import Error from "@/views/Error";
+import Home from "@/views/Home";
+import Login from "@/views/Login";
+import Products from "@/views/Products";
+import Register from "@/views/Register";
+import Cart from "@/views/Cart";
 
 export { AboutUs, Categories, Error, Home, Login, Products, Register, Cart };
