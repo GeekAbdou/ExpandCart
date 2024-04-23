@@ -1,3 +1,9 @@
+
+
+  .leftContainer{
+    display: flex;
+    gap: 10px;
+  }
 .basketContainer {
   align-self: flex-end;
   cursor: pointer;
