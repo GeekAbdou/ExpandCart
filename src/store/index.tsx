@@ -1,4 +1,6 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import persistStore from "redux-persist/es/persistStore";
 import {
   persistReducer,
   FLUSH,
@@ -8,12 +10,10 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import categoriesReducer from "./categories/categoriesSlice";
-import productsReducer from "./products/productsSlice";
-import cartReducer from "./cart/cartSlice";
-import storage from "redux-persist/lib/storage";
-import persistStore from "redux-persist/es/persistStore";
-import wishlist from "./wishlist/wishlistSlice";
+import categoriesReducer from "@/store/categories/categoriesSlice";
+import productsReducer from "@/store/products/productsSlice";
+import cartReducer from "@/store/cart/cartSlice";
+import wishlist from "@/store/wishlist/wishlistSlice";
 
 /*const rootPersistConfig = {
   key: "root",
