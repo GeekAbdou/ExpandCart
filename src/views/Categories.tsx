@@ -1,4 +1,4 @@
-import { Category } from "@/components/eCommerce";
+import { Category } from "@/components/ECommerce/index";
 import { GridList, Heading } from "@/components/shared/index";
 import { categoryType } from "@/types";
 import useCategories from "@/hooks/useCategories";

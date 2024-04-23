@@ -1,5 +1,5 @@
 import { Heading } from "@/components/shared";
-import { CartItemList, CartSubtotalPrice } from "@/components/eCommerce";
+import { CartItemList, CartSubtotalPrice } from "@/components/ECommerce/index";
 import useCart from "@/hooks/useCart";
 import { Loading, LottieHandler } from "@/components/shared/loadingFallbacks";
 

@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { HeaderBasket } from "../../eCommerce";
+import { HeaderBasket } from "@/components/ECommerce/index";
 import { Badge, Navbar, Nav, Container } from "react-bootstrap";
 
 import styles from "./styles.module.css";

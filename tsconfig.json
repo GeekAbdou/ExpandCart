@@ -7,25 +7,31 @@
     "skipLibCheck": true,
     "types": ["vite-plugin-svgr/client"],
 
-    /* Bundler mode */
+    /* Module Resolution and Bundler Settings */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+
     /* Absolute path imports */
-    "baseUrl": "./",
+    "baseUrl": "./src",  // Adjusted to point directly to 'src'
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["*"]  // Simplified based on the new baseUrl
     },
-    /* Linting */
+
+    /* Linting and Strictness */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",  // Included .tsx files
+    "tests/**/*.ts"
+  ],
   "exclude": ["node_modules", ".vscode"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

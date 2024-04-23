@@ -1,4 +1,4 @@
-import { Product } from "@/components/eCommerce";
+import { Product } from "@/components/ECommerce/index";
 import { memo } from "react";
 import useProducts from "@/hooks/useProducts";
 import { GridList, Heading } from "@/components/shared/index";

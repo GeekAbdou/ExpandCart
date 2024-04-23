@@ -1,4 +1,4 @@
-import { Product } from "@/components/eCommerce";
+import { Product } from "@/components/ECommerce/index";
 import { GridList, Heading } from "@/components/shared/index";
 import { productType } from "@/types";
 import useWishlist from "@/hooks/useWishlist";
