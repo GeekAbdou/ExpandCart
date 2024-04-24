@@ -18,7 +18,7 @@ const GridList = <T extends { id?: number }>({
         <Col
           xs={3}
           key={record.id}
-          className="d-flex justify-content-center mb-5 mt-2"
+          className="d-flex justify-content-center mb-3 mt-2"
         >
           {renderItem(record)}
         </Col>

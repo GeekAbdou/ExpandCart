@@ -1,0 +1,92 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 270px;
+  height: 400px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+  border-radius: 5px;
+}
+
+.productImg {
+  height: 260px;
+  background-color: #f2f2f2;
+}
+
+.productImg img {
+  height: 100%;
+  width: 100%;
+}
+
+.product h2 {
+  font-size: 16px;
+  margin-top: 9px;
+  margin-bottom: 12px;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+}
+
+.product h3 {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+}
+
+.maximumNotice {
+  font-size: 12px;
+  margin-bottom: 7px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.wishlistBtn {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #000;
+  width: 33px;
+  height: 33px;
+  text-align: center;
+  line-height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.wishlistBtn:hover {
+  box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.4);
+  background-color: #000;
+}
+
+.wishlistBtn svg {
+  width: 20px;
+}
+.wishlistBtn:hover svg {
+  fill: #ffffff;
+}
+
+.ContentSec {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin-bottom: 10px;
+}
+
+.addToCartBtn {
+  background-color: #000 !important;
+  border: none !important;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+}
+
+.title {
+  margin: 50px 20px 10px 25px;
+}

@@ -1,4 +1,3 @@
-import React from "react";
 import "./BestSeller.css"; // Ensure you create this CSS file
 import { Button, Spinner } from "react-bootstrap";
 import useProduct from "@/hooks/useProduct"; // Import the useProduct hook
