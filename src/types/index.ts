@@ -14,6 +14,8 @@ export type productType = {
   max: number;
   quantity?: number;
   isLiked?: boolean;
+  oldPrice?: string;
+  productLink?: string;
 };
 
 export type loadingType = "idle" | "pending" | "succeeded" | "failed";

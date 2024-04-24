@@ -4,7 +4,10 @@ import { PageSpinner } from "@/components/shared";
 // layouts
 import MainLayout from "@/templates/MainLayout/MainLayout";
 // components
-import { LottieHandler, PageSuspenseFallback } from "@/components/shared/loadingFallbacks";
+import {
+  LottieHandler,
+  PageSuspenseFallback,
+} from "@/components/shared/loadingFallbacks";
 // pages
 import Error from "@/views/Error";
 const AboutUs = React.lazy(() => import("@/views/AboutUs"));
@@ -15,6 +18,7 @@ const Products = React.lazy(() => import("@/views/Products"));
 const Register = React.lazy(() => import("@/views/Register"));
 const Cart = React.lazy(() => import("@/views/Cart"));
 const Wishlist = React.lazy(() => import("@/views/Wishlist"));
+const Shop = React.lazy(() => import("@/views/Shop"));
 
 const router = createBrowserRouter([
   {
@@ -25,11 +29,16 @@ const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={
-            <div style={{ marginTop: "10%" }}>
-              <LottieHandler type="loading" message="Loading please wait..." />
-            </div>
-          }>
+          <Suspense
+            fallback={
+              <div style={{ marginTop: "10%" }}>
+                <LottieHandler
+                  type="loading"
+                  message="Loading please wait..."
+                />
+              </div>
+            }
+          >
             <Home />
           </Suspense>
         ),
@@ -99,6 +108,14 @@ const router = createBrowserRouter([
         element: (
           <PageSuspenseFallback>
             <Wishlist />
+          </PageSuspenseFallback>
+        ),
+      },
+      {
+        path: "shop",
+        element: (
+          <PageSuspenseFallback>
+            <Shop />
           </PageSuspenseFallback>
         ),
       },

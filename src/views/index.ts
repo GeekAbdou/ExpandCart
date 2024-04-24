@@ -6,5 +6,16 @@ import Login from "@/views/Login";
 import Products from "@/views/Products";
 import Register from "@/views/Register";
 import Cart from "@/views/Cart";
+import Shop from "@/views/Shop";
 
-export { AboutUs, Categories, Error, Home, Login, Products, Register, Cart };
+export {
+  AboutUs,
+  Categories,
+  Error,
+  Home,
+  Login,
+  Products,
+  Register,
+  Cart,
+  Shop,
+};
