@@ -1,4 +1,14 @@
 .headerContainer {
+  border-bottom: 1px solid #ccc;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 99;
+}
+
+.topHeaderContainer {
   padding: 20px 0;
   display: flex;
   justify-content: space-between;

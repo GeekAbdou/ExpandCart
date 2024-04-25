@@ -1,5 +1,4 @@
 import { memo } from "react";
-import styles from "./styles.module.css";
 import { productType } from "@/types";
 import SingleProduct from "./SingleProduct";
 import { GridList } from "@/components/shared";

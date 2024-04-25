@@ -3,7 +3,7 @@ import { UserNav } from "@/components/ECommerce/index";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
-const { headerContainer, headerLogo } = styles;
+const { headerContainer, headerLogo, topHeaderContainer } = styles;
 
 const Header = () => {
   const [logo, setLogo] = useState("");
@@ -18,13 +18,15 @@ const Header = () => {
   }, []);
 
   return (
-    <header>
-      <div className={headerContainer}>
-        <Link to="/">
-          <img src={logo} alt="Logo" className={headerLogo} />
-        </Link>
-        <UserNav />
-      </div>
+    <header className={headerContainer}>
+      <Container>
+        <div className={topHeaderContainer}>
+          <Link to="/">
+            <img src={logo} alt="Logo" className={headerLogo} />
+          </Link>
+          <UserNav />
+        </div>
+      </Container>
       <Navbar
         expand="lg"
         className="bg-body-tertiary"
