@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  width: 220px;
-  height: 380px;
+  width: 250px;
+  height: 400px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
   border-radius: 5px;
 }
@@ -73,7 +73,7 @@
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  width: 220px;
+  width: 100%;
   border-radius: 5px;
   padding: 5px 15px;
   margin-bottom: 10px;

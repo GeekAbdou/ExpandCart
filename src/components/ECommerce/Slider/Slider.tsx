@@ -16,18 +16,12 @@ const getImg = (item: number): string => {
 const images: Image[] = [
   {
     src: getImg(1),
-    // label: "First Slide",
-    // description: "Description of first slide",
   },
   {
     src: getImg(1),
-    // label: "Second Slide",
-    // description: "Description of second slide",
   },
   {
     src: getImg(1),
-    // label: "Third Slide",
-    // description: "Description of third slide",
   },
 ];
 

@@ -29,19 +29,25 @@
 .linkSection,
 .contactSection {
   flex: 1;
+  margin-right: 20px;
 }
 
 .sectionTitle {
   margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 30px;
 }
 
 .logoWord {
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: 700;
 }
 
 .footerListItem {
   font-size: 16px;
-  line-height: 1.6;
+  margin-bottom: 5px;
+  margin-right: 50px;
 }
 
 .containerFooter {

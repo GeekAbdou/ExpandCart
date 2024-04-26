@@ -1,16 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actLikeToggle from "./actions/actLikeToggle";
 import actGetWishlist from "./actions/actGetWishlist";
-import { loadingType, productType, isString } from "@/types";
+import { isString, wishlistType } from "@/types";
 
-interface IWishlist {
-  itemsId: number[];
-  productsFullInfo: productType[];
-  error: null | string;
-  loading: loadingType;
-}
-
-const initialState: IWishlist = {
+const initialState: wishlistType = {
   itemsId: [],
   productsFullInfo: [],
   error: null,

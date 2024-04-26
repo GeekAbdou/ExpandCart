@@ -4,7 +4,6 @@ export type categoryType = {
   prefix: string;
   img: string;
 };
-
 export type productType = {
   id: number;
   title: string;
@@ -16,6 +15,38 @@ export type productType = {
   isLiked?: boolean;
   oldPrice?: string;
   productLink?: string;
+  brand?: string;
+  availability?: boolean;
+  sku?: string;
+};
+export type carouselType = {
+  id: number;
+  img: string;
+  title: string;
+  subTitle: string;
+  link: string;
+};
+export type wishlistType = {
+  itemsId: number[];
+  productsFullInfo: productType[];
+  error: null | string;
+  loading: loadingType;
+};
+export type bestSellerType = {
+  productsFullInfo: productType[];
+  error: null | string;
+  loading: loadingType;
+};
+export type cartType = {
+  items: { [key: string]: number };
+  productsFullInfo: productType[];
+  loading: loadingType;
+  error: null | string;
+};
+export type productCatalogType = {
+  productsFullInfo: productType[];
+  error: null | string;
+  loading: loadingType;
 };
 
 export type loadingType = "idle" | "pending" | "succeeded" | "failed";

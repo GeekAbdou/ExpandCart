@@ -43,7 +43,7 @@ const UserNav = () => {
   const totalWishlistItems = useAppSelector(getWishlistTotalItemsSelector);
   const isCartAnimate = useAnimate(totalCartItems);
   const isWishlistAnimate = useAnimate(totalWishlistItems);
-
+  const [searchValue, setSearchValue] = useState("");
   return (
     <>
       <div className={inputGroup} id="search">
@@ -52,8 +52,10 @@ const UserNav = () => {
           className={SearchInput}
           name="search"
           placeholder="Search"
-          value=""
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
         />
+
         <div className={inputGroupAppend}>
           <button
             className="search-button button-search btn btn-link btn-sm"

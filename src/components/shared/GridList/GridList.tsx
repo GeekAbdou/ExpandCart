@@ -16,9 +16,11 @@ const GridList = <T extends { id?: number }>({
     records.length > 0 ? (
       records.map((record) => (
         <Col
-          xs={3}
+          xs={6} // 50% width on extra small devices
+          sm={4} // 25% width on small devices and up
+          lg={3} // 33.33% width on large devices and up
           key={record.id}
-          className="d-flex justify-content-center mb-3 mt-2"
+          className="d-flex justify-content-center mb-5 mt-2"
         >
           {renderItem(record)}
         </Col>

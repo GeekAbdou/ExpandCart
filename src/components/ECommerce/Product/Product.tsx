@@ -25,9 +25,9 @@ const Product = memo(({ productData }: ProductProps) => {
         {isLoading ? (
           <Spinner animation="border" size="sm" variant="primary" />
         ) : productData.isLiked ? (
-          <LikeFill />
-        ) : (
           <Like />
+        ) : (
+          <LikeFill />
         )}
       </div>
 

@@ -14,19 +14,15 @@ import {
 import categoriesReducer from "@/store/categories/categoriesSlice";
 import productsReducer from "@/store/products/productsSlice";
 import cartReducer from "@/store/cart/cartSlice";
-import wishlist from "@/store/wishlist/wishlistSlice";
+import wishlistReducer from "@/store/wishlist/wishlistSlice";
 import shopReducer from "@/store/shop/shopSlice";
-
-/*const rootPersistConfig = {
-  key: "root",
-  storage,
-  whiteList: ["cart"],
-};*/
+import bestSellerReducer from "@/store/bestSeller/bestSellerSlice";
+import productCatalogReducer from "@/store/productCatalog/productCatalogSlice";
 
 const cartPersistConfig = {
   key: "cart",
   storage,
-  whiteList: ["items"],
+  whitelist: ["items"],
 };
 
 const wishlistPersistConfig = {
@@ -40,13 +36,12 @@ const rootReducer = combineReducers({
   products: productsReducer,
   shop: shopReducer,
   cart: persistReducer(cartPersistConfig, cartReducer),
-  wishlist: persistReducer(wishlistPersistConfig, wishlist),
+  wishlist: persistReducer(wishlistPersistConfig, wishlistReducer),
+  bestSeller: bestSellerReducer,
+  productCatalog: productCatalogReducer,
 });
 
-//const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
-
 const store = configureStore({
-  // reducer: persistedReducer,
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
