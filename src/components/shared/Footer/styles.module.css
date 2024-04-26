@@ -21,8 +21,8 @@
 
 .footerSection {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .logoSection,
@@ -62,6 +62,10 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+
+  @media screen and (max-width: 1250px) {
+    margin: 0 50px;
+  }
 }
 
 .pullLeft,
@@ -69,7 +73,11 @@
   display: flex;
   align-items: center;
 }
-
+@media screen and (max-width: 600px) {
+  .footerBottom {
+    flex-direction: column;
+  }
+}
 .pullRight img {
   margin-left: 10px;
   width: 40px;
@@ -82,6 +90,5 @@
 
   .footerSection {
     flex-direction: column;
-    align-items: center;
   }
 }

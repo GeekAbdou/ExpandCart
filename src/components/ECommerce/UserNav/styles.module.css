@@ -68,6 +68,9 @@
   background-color: #f2f5f5;
   border-radius: 25px;
   padding: 3px 15px;
+  @media screen and (max-width: 450px) {
+    display: none;
+  }
 }
 .inputGroupAppend {
   margin-left: -1px;
