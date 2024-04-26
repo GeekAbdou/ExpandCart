@@ -2,7 +2,8 @@ import Shipping from "@/assets/svg/shipping.svg?react";
 import Best from "@/assets/svg/best.svg?react";
 import Return from "@/assets/svg/return.svg?react";
 import Payment from "@/assets/svg/payment.svg?react";
-import "./StoreServices.css";
+import styles from "./styles.module.css";
+
 const serviceItems = [
   {
     Icon: Shipping,
@@ -28,15 +29,18 @@ const serviceItems = [
 
 const StoreServices = () => {
   return (
-    <div className="best-services" data-aos="fade-up">
+    <div className={styles.bestServices}>
       {serviceItems.map((item, index) => (
-        <div className="item" key={index}>
-          <div className="icon-container">
+        <div className={styles.item} key={index}>
+          <div className="iconContainer"></div>
+          <div className={styles.svgInline}>
             <item.Icon />
           </div>
           <div>
-            <p className="text-black">{item.title}</p>
-            <p className="text-sm text-qgray">{item.description}</p>
+            <p className={styles.textBlack}>{item.title}</p>
+            <p className={`${styles.textSm} ${styles.textQgray}`}>
+              {item.description}
+            </p>
           </div>
         </div>
       ))}

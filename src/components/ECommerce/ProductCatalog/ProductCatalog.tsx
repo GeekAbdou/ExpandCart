@@ -1,6 +1,5 @@
 import { memo, useEffect } from "react";
 import { productType } from "@/types";
-import SingleProduct from "./SingleProduct";
 import { GridList } from "@/components/shared";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
@@ -8,6 +7,7 @@ import {
   cleanUpProductCatalogFullInfo,
 } from "@/store/productCatalog/productCatalogSlice";
 import styles from "./styles.module.css";
+import Product from "../Product/Product";
 
 const ProductCatalog = memo(() => {
   const dispatch = useAppDispatch();
@@ -30,7 +30,7 @@ const ProductCatalog = memo(() => {
         emptyMessage="There are no products"
         records={productsFullInfo}
         renderItem={(product) => (
-          <SingleProduct key={product.id} product={product} />
+          <Product key={product.id} productData={product} />
         )}
       />
     </div>

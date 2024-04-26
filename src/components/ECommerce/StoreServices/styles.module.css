@@ -1,4 +1,4 @@
-.best-services {
+.bestServices {
   width: 100%;
   background-color: #f8f9fa;
   display: grid;
@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 992px) {
-  .best-services {
+  .bestServices {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -19,7 +19,7 @@
   align-items: center;
 }
 
-.icon-container {
+.iconContainer {
   width: 40px;
   height: 40px;
   display: flex;
@@ -28,29 +28,29 @@
   color: #000000;
 }
 
-.text-black {
+.textBlack {
   color: black;
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 1px !important;
 }
 
-.text-qgray {
+.textQgray {
   color: #808080;
   font-size: smaller;
   margin-bottom: 0px !important;
 }
 
-.text-sm {
+.textSm {
   font-size: small;
 }
 
-/* Handling right-to-left layout adjustments for RTL languages */
 .rtl .item {
   flex-direction: row-reverse;
 }
 
-.svg-inline--fa {
+.svgInline {
   width: 32px;
   height: 32px;
+  margin-right: 10px;
 }
