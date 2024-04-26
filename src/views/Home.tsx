@@ -1,12 +1,12 @@
 import BestSeller from "@/components/ECommerce/BestSeller/BestSeller";
 import ProductCatalog from "@/components/ECommerce/ProductCatalog/ProductCatalog";
-import Slider from "@/components/ECommerce/Slider/Slider";
+import Carousel from "@/components/ECommerce/Carousel/Carousel";
 import StoreServices from "@/components/ECommerce/StoreServices/StoreServices";
 
 const Home = () => {
   return (
     <>
-      <Slider />
+      <Carousel />
       <StoreServices />
       <BestSeller />
       <ProductCatalog />

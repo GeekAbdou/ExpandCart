@@ -18,6 +18,7 @@ import wishlistReducer from "@/store/wishlist/wishlistSlice";
 import shopReducer from "@/store/shop/shopSlice";
 import bestSellerReducer from "@/store/bestSeller/bestSellerSlice";
 import productCatalogReducer from "@/store/productCatalog/productCatalogSlice";
+import carouselReducer from "@/store/carousel/CarouselSlice";
 
 const cartPersistConfig = {
   key: "cart",
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
   wishlist: persistReducer(wishlistPersistConfig, wishlistReducer),
   bestSeller: bestSellerReducer,
   productCatalog: productCatalogReducer,
+  carousel: carouselReducer,
 });
 
 const store = configureStore({

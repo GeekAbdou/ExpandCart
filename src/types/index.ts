@@ -22,8 +22,8 @@ export type productType = {
 export type carouselType = {
   id: number;
   img: string;
-  title: string;
-  subTitle: string;
+  title?: string;
+  subTitle?: string;
   link: string;
 };
 export type wishlistType = {
@@ -59,6 +59,11 @@ export type categoryResponseType = {
 
 export type productResponseType = {
   records: productType[];
+  loading: loadingType;
+  error: string | null;
+};
+export type carouselResponseType = {
+  records: carouselType[];
   loading: loadingType;
   error: string | null;
 };
