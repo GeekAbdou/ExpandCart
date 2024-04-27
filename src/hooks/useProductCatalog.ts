@@ -11,7 +11,9 @@ const useProductCatalog = () => {
   const wishListItemsId = useAppSelector((state) => state.wishlist.itemsId);
   const userAccessToken = useAppSelector((state) => state.auth.accessToken);
   const cartItems = useAppSelector((state) => state.cart.items);
-  const { productsFullInfo } = useAppSelector((state) => state.productCatalog);
+  const { error, loading, productsFullInfo } = useAppSelector(
+    (state) => state.productCatalog
+  );
 
   const productCatalogFullInfo = productsFullInfo.map((el: productType) => ({
     ...el,
@@ -27,6 +29,6 @@ const useProductCatalog = () => {
     };
   }, [dispatch]);
 
-  return { productCatalogFullInfo };
+  return { error, loading, productCatalogFullInfo };
 };
 export default useProductCatalog;

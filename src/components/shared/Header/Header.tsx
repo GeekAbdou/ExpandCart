@@ -1,12 +1,22 @@
 import { Link, NavLink } from "react-router-dom";
 import { UserNav } from "@/components/ECommerce/index";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
-const { headerContainer, headerLogo, topHeaderContainer } = styles;
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { authLogout } from "@/store/auth/authSlice";
 
 const Header = () => {
+  const dispatch = useAppDispatch();
+
+  const { accessToken, user } = useAppSelector((state) => state.auth);
+  const isLoggedIn = accessToken !== null;
+
   const [logo, setLogo] = useState("");
+
+  const handleLogout = () => {
+    dispatch(authLogout());
+  };
 
   useEffect(() => {
     const fetchLogo = async () => {
@@ -18,11 +28,11 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={headerContainer}>
+    <header className={styles.headerContainer}>
       <Container>
-        <div className={topHeaderContainer}>
+        <div className={styles.topHeaderContainer}>
           <Link to="/">
-            <img src={logo} alt="Logo" className={headerLogo} />
+            <img src={logo} alt="Logo" className={styles.headerLogo} />
           </Link>
           <UserNav />
         </div>
@@ -51,12 +61,24 @@ const Header = () => {
               </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link as={NavLink} to="login">
-                Login
-              </Nav.Link>
-              <Nav.Link as={NavLink} to="register">
-                Register
-              </Nav.Link>
+              {!isLoggedIn && (
+                <>
+                  <Nav.Link as={NavLink} to="login">
+                    Login
+                  </Nav.Link>
+                  <Nav.Link as={NavLink} to="register">
+                    Register
+                  </Nav.Link>
+                </>
+              )}
+              {isLoggedIn && (
+                <div className={styles.userWelcome}>
+                  <span>{`Hi ${user?.firstName} !`}</span>
+                  <Button onClick={handleLogout} variant="secondary">
+                    Logout
+                  </Button>
+                </div>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

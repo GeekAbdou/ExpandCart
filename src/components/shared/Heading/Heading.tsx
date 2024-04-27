@@ -1,9 +1,7 @@
+import styles from "./styles.module.css";
+
 function Heading({ title }: { title: string }) {
-  return (
-    <div className="mb-3" style={{ fontSize: "26px" }}>
-      {title}
-    </div>
-  );
+  return <div className={styles.title}>{title}</div>;
 }
 
 export default Heading;

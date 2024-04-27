@@ -5,12 +5,13 @@ import { GridList } from "@/components/shared";
 import styles from "./styles.module.css";
 import Product from "../Product/Product";
 import useProductCatalog from "@/hooks/useProductCatalog";
+import { Loading } from "@/components/shared/loadingFallbacks";
 
 const ProductCatalog = memo(() => {
-  const { productCatalogFullInfo } = useProductCatalog();
+  const { error, loading, productCatalogFullInfo } = useProductCatalog();
 
   return (
-    <div>
+    <Loading status={loading} error={error} type="home">
       <h2 className={styles.productCatalogTitle}>Product Catalog</h2>
       <GridList<productType>
         emptyMessage="There are no products"
@@ -19,7 +20,7 @@ const ProductCatalog = memo(() => {
           <Product key={product.id} productData={product} />
         )}
       />
-    </div>
+    </Loading>
   );
 });
 

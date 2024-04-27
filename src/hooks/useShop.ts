@@ -6,9 +6,9 @@ import { useEffect } from "react";
 
 const useShop = () => {
   const dispatch = useAppDispatch();
+  const { loading, error, records } = useAppSelector((state) => state.shop);
   const wishListItemsId = useAppSelector((state) => state.wishlist.itemsId);
   const userAccessToken = useAppSelector((state) => state.auth.accessToken);
-  const { loading, error, records } = useAppSelector((state) => state.products);
   const cartItems = useAppSelector((state) => state.cart.items);
 
   const productsFullInfo = records.map((el: productType) => ({

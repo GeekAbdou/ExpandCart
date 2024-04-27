@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import Like from "@/assets/svg/like.svg?react";
 import LikeFill from "@/assets/svg/fill-like.svg?react";
 import useProduct from "@/hooks/useProduct";
+import { useNavigate } from "react-router-dom";
 
 interface ProductProps {
   productData: productType;
@@ -21,6 +22,12 @@ const Product = memo(({ productData }: ProductProps) => {
     setShowModal,
   } = useProduct({ productData });
 
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/login");
+    setShowModal(false);
+  };
   return (
     <>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -29,6 +36,12 @@ const Product = memo(({ productData }: ProductProps) => {
         </Modal.Header>
         <Modal.Body>
           You need to login first to add this item to your wishlist.
+          <div style={{ textAlign: "center", marginTop: "20px" }}>
+            {" "}
+            <Button size="lg" variant="primary" onClick={handleLogin}>
+              Login
+            </Button>
+          </div>
         </Modal.Body>
       </Modal>
       <div className={styles.product}>

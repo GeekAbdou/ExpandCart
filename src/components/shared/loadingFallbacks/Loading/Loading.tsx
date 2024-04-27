@@ -1,6 +1,7 @@
 import CategorySkeleton from "@/components/shared/loadingFallbacks/CategorySkeleton/CategorySkeleton";
 import ProductSkeleton from "@/components/shared/loadingFallbacks/ProductSkeleton/ProductSkeleton";
 import CartSkeleton from "@/components/shared/loadingFallbacks/CartSkeleton/CartSkeleton";
+import HomeSkeleton from "@/components/shared/loadingFallbacks/HomeSkelton/HomeSkeleton";
 import LottieHandler from "@/components/shared/loadingFallbacks/LottieHandler/LottieHandler";
 
 import { loadingType } from "@/types";
@@ -9,6 +10,7 @@ const skeletonsTypes = {
   category: CategorySkeleton,
   product: ProductSkeleton,
   cart: CartSkeleton,
+  home: HomeSkeleton,
 };
 
 type LoadingProps = {

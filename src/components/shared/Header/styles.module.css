@@ -35,3 +35,12 @@
   display: block;
   margin-right: 5px;
 }
+
+.userWelcome {
+  display: flex;
+  align-items: center;
+}
+.userWelcome span {
+  margin-right: 15px;
+  font-weight: 700;
+}
