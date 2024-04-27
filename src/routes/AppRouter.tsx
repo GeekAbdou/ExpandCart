@@ -9,7 +9,8 @@ import {
   PageSuspenseFallback,
 } from "@/components/shared/loadingFallbacks";
 // pages
-import Error from "@/views/Error";
+
+const Error = React.lazy(() => import("@/views/Error"));
 const AboutUs = React.lazy(() => import("@/views/AboutUs"));
 const Categories = React.lazy(() => import("@/views/Categories"));
 const Home = React.lazy(() => import("@/views/Home"));

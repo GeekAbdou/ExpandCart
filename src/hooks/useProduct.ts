@@ -10,6 +10,8 @@ const useProduct = ({ productData }: ProductProps) => {
   const dispatch = useAppDispatch();
   const [isBtnDisabled, setIsBtnDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   const currentRemainingQuantity =
     productData.max - (productData.quantity ?? 0);
   const quantityReachedToMax = currentRemainingQuantity <= 0 ? true : false;
@@ -31,12 +33,16 @@ const useProduct = ({ productData }: ProductProps) => {
     setIsBtnDisabled(true);
   };
   const likeToggleHandler = () => {
-    if (!isLoading) {
-      setIsLoading(true);
-      dispatch(actLikeToggle(productData.id))
-        .unwrap()
-        .then(() => setIsLoading(false))
-        .catch(() => setIsLoading(false));
+    if (productData.isAuthenticated) {
+      if (!isLoading) {
+        setIsLoading(true);
+        dispatch(actLikeToggle(productData.id))
+          .unwrap()
+          .then(() => setIsLoading(false))
+          .catch(() => setIsLoading(false));
+      }
+    } else {
+      setShowModal(true);
     }
   };
 
@@ -46,6 +52,8 @@ const useProduct = ({ productData }: ProductProps) => {
     quantityReachedToMax,
     isBtnDisabled,
     isLoading,
+    showModal,
+    setShowModal,
   };
 };
 export default useProduct;

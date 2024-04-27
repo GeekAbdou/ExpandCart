@@ -3,6 +3,7 @@ import Best from "@/assets/svg/best.svg?react";
 import Return from "@/assets/svg/return.svg?react";
 import Payment from "@/assets/svg/payment.svg?react";
 import styles from "./styles.module.css";
+import { useAppSelector } from "@/store/hooks";
 
 const serviceItems = [
   {
@@ -28,23 +29,26 @@ const serviceItems = [
 ];
 
 const StoreServices = () => {
-  return (
-    <div className={styles.bestServices}>
-      {serviceItems.map((item, index) => (
-        <div className={styles.item} key={index}>
-          <div className="iconContainer"></div>
-          <div className={styles.svgInline}>
-            <item.Icon />
+  const { loading } = useAppSelector((state) => state.carousel);
+  if (loading === "succeeded") {
+    return (
+      <div className={styles.bestServices}>
+        {serviceItems.map((item, index) => (
+          <div className={styles.item} key={index}>
+            <div className="iconContainer"></div>
+            <div className={styles.svgInline}>
+              <item.Icon />
+            </div>
+            <div>
+              <p className={styles.textBlack}>{item.title}</p>
+              <p className={`${styles.textSm} ${styles.textQgray}`}>
+                {item.description}
+              </p>
+            </div>
           </div>
-          <div>
-            <p className={styles.textBlack}>{item.title}</p>
-            <p className={`${styles.textSm} ${styles.textQgray}`}>
-              {item.description}
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+        ))}
+      </div>
+    );
+  }
 };
 export default StoreServices;

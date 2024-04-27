@@ -1,3 +1,4 @@
+// product & Category & HomeTypes
 export type categoryType = {
   id?: number;
   title: string;
@@ -18,6 +19,7 @@ export type productType = {
   brand?: string;
   availability?: boolean;
   sku?: string;
+  isAuthenticated?: boolean;
 };
 export type carouselType = {
   id: number;
@@ -49,14 +51,12 @@ export type productCatalogType = {
   loading: loadingType;
 };
 
-export type loadingType = "idle" | "pending" | "succeeded" | "failed";
-
+//Responses
 export type categoryResponseType = {
   records: categoryType[];
   loading: loadingType;
   error: string | null;
 };
-
 export type productResponseType = {
   records: productType[];
   loading: loadingType;
@@ -68,6 +68,39 @@ export type carouselResponseType = {
   error: string | null;
 };
 
+//Auth Types
+export type AuthStateType = {
+  user: {
+    id: number;
+    email: string;
+    firstName: string;
+    lastName: string;
+  } | null;
+  accessToken: string | null;
+  loading: loadingType;
+  error: string | null;
+};
+export type registerFormDataType = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+};
+export type loginFormDataType = {
+  email: string;
+  password: string;
+};
+export type loginResponseType = {
+  user: {
+    id: number;
+    email: string;
+    firstName: string;
+    lastName: string;
+  };
+  accessToken: string;
+};
+
 // TS Predicate
 export const isString = (value: unknown): value is string =>
   typeof value === "string";
+export type loadingType = "idle" | "pending" | "succeeded" | "failed";

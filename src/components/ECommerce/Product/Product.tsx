@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Button, Spinner } from "react-bootstrap";
+import { Button, Modal, Spinner } from "react-bootstrap";
 import { productType } from "@/types";
 import styles from "./styles.module.css";
 import Like from "@/assets/svg/like.svg?react";
@@ -17,52 +17,64 @@ const Product = memo(({ productData }: ProductProps) => {
     quantityReachedToMax,
     isBtnDisabled,
     isLoading,
+    showModal,
+    setShowModal,
   } = useProduct({ productData });
 
   return (
-    <div className={styles.product}>
-      <div className={styles.wishlistBtn} onClick={likeToggleHandler}>
-        {isLoading ? (
-          <Spinner animation="border" size="sm" variant="primary" />
-        ) : productData.isLiked ? (
-          <Like />
-        ) : (
-          <LikeFill />
-        )}
-      </div>
+    <>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Login Required</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          You need to login first to add this item to your wishlist.
+        </Modal.Body>
+      </Modal>
+      <div className={styles.product}>
+        <div className={styles.wishlistBtn} onClick={likeToggleHandler}>
+          {isLoading ? (
+            <Spinner animation="border" size="sm" variant="primary" />
+          ) : productData.isLiked ? (
+            <Like />
+          ) : (
+            <LikeFill />
+          )}
+        </div>
 
-      <div className={styles.productImg}>
-        <img src={productData.img} alt={productData.title} />
-      </div>
+        <div className={styles.productImg}>
+          <img src={productData.img} alt={productData.title} />
+        </div>
 
-      <div className={styles.ContentSec}>
-        <h2>{productData.title}</h2>
+        <div className={styles.ContentSec}>
+          <h2>{productData.title}</h2>
 
-        <h3>{Number(productData.price).toFixed(2)} EGP</h3>
+          <h3>{Number(productData.price).toFixed(2)} EGP</h3>
 
-        {/* <p className={styles.maximumNotice}>
+          {/* <p className={styles.maximumNotice}>
             {quantityReachedToMax
               ? "You reach to the limit"
               : `You can add ${currentRemainingQuantity} item(s)`}
           </p>*/}
 
-        <Button
-          variant="info"
-          className={styles.addToCartBtn}
-          style={{ color: "white" }}
-          onClick={addToCartHandler}
-          disabled={isBtnDisabled || quantityReachedToMax}
-        >
-          {isBtnDisabled ? (
-            <>
-              <Spinner animation="border" size="sm" /> Loading...
-            </>
-          ) : (
-            "Add to cart"
-          )}
-        </Button>
+          <Button
+            variant="info"
+            className={styles.addToCartBtn}
+            style={{ color: "white" }}
+            onClick={addToCartHandler}
+            disabled={isBtnDisabled || quantityReachedToMax}
+          >
+            {isBtnDisabled ? (
+              <>
+                <Spinner animation="border" size="sm" /> Loading...
+              </>
+            ) : (
+              "Add to cart"
+            )}
+          </Button>
+        </div>
       </div>
-    </div>
+    </>
   );
 });
 

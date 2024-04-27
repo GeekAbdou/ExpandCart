@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 const useCart = () => {
   const dispatch = useAppDispatch();
-  const { records } = useAppSelector((state) => state.carousel);
+  const { loading, error, records } = useAppSelector((state) => state.carousel);
 
   useEffect(() => {
     dispatch(actGetCarouselItems());
@@ -18,6 +18,8 @@ const useCart = () => {
 
   return {
     records,
+    loading,
+    error,
   };
 };
 

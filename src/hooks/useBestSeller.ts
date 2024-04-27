@@ -7,6 +7,10 @@ import {
 
 const useBestSeller = () => {
   const dispatch = useAppDispatch();
+  const { productsFullInfo, error, loading } = useAppSelector(
+    (state) => state.bestSeller
+  );
+
   useEffect(() => {
     dispatch(actGetBestSeller());
     return () => {
@@ -14,11 +18,7 @@ const useBestSeller = () => {
     };
   }, [dispatch]);
 
-  const bestSellerState = useAppSelector((state) => state.bestSeller);
-
-  const { productsFullInfo } = bestSellerState;
-
-  return productsFullInfo;
+  return { productsFullInfo, error, loading };
 };
 
 export default useBestSeller;

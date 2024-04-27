@@ -1,17 +1,19 @@
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { actGetAllProducts } from "@/store/shop/actions/actGetAllProducts";
-import { CleanUpShopRecords } from "@/store/shop/shopSlice";
+import {
+  actGetProductCatalog,
+  cleanUpProductCatalogFullInfo,
+} from "@/store/productCatalog/productCatalogSlice";
 import { productType } from "@/types";
 import { useEffect } from "react";
 
-const useShop = () => {
+const useProductCatalog = () => {
   const dispatch = useAppDispatch();
   const wishListItemsId = useAppSelector((state) => state.wishlist.itemsId);
   const userAccessToken = useAppSelector((state) => state.auth.accessToken);
-  const { loading, error, records } = useAppSelector((state) => state.products);
   const cartItems = useAppSelector((state) => state.cart.items);
+  const { productsFullInfo } = useAppSelector((state) => state.productCatalog);
 
-  const productsFullInfo = records.map((el: productType) => ({
+  const productCatalogFullInfo = productsFullInfo.map((el: productType) => ({
     ...el,
     quantity: cartItems[el.id],
     isLiked: wishListItemsId.includes(el.id),
@@ -19,13 +21,12 @@ const useShop = () => {
   }));
 
   useEffect(() => {
-    const promise = dispatch(actGetAllProducts());
-
+    dispatch(actGetProductCatalog());
     return () => {
-      promise.abort();
-      dispatch(CleanUpShopRecords());
+      dispatch(cleanUpProductCatalogFullInfo());
     };
   }, [dispatch]);
-  return { loading, error, productsFullInfo };
+
+  return { productCatalogFullInfo };
 };
-export default useShop;
+export default useProductCatalog;

@@ -1,9 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actLikeToggle from "./actions/actLikeToggle";
 import actGetWishlist from "./actions/actGetWishlist";
-import { isString, wishlistType } from "@/types";
+import { authLogout } from "@/store/auth/authSlice";
+import { productType, loadingType, isString } from "@/types";
 
-const initialState: wishlistType = {
+interface IWishlist {
+  itemsId: number[];
+  productsFullInfo: productType[];
+  error: null | string;
+  loading: loadingType;
+}
+
+const initialState: IWishlist = {
   itemsId: [],
   productsFullInfo: [],
   error: null,
@@ -14,7 +22,7 @@ const wishlistSlice = createSlice({
   name: "wishlist",
   initialState,
   reducers: {
-    cleanUpWishlistProductsFullInfo: (state) => {
+    cleanWishlistProductsFullInfo: (state) => {
       state.productsFullInfo = [];
     },
   },
@@ -33,7 +41,7 @@ const wishlistSlice = createSlice({
       }
     });
     builder.addCase(actLikeToggle.rejected, (state, action) => {
-      if (action.payload && typeof action.payload === "string") {
+      if (isString(action.payload)) {
         state.error = action.payload;
       }
     });
@@ -44,18 +52,27 @@ const wishlistSlice = createSlice({
     });
     builder.addCase(actGetWishlist.fulfilled, (state, action) => {
       state.loading = "succeeded";
-      state.productsFullInfo = action.payload;
+      if (action.payload.dataType === "ProductsFullInfo") {
+        state.productsFullInfo = action.payload.data as productType[];
+      } else if (action.payload.dataType === "productsIds") {
+        state.itemsId = action.payload.data as number[];
+      }
     });
     builder.addCase(actGetWishlist.rejected, (state, action) => {
       state.loading = "failed";
-      // state.error = action.error?.message || null;
       if (isString(action.payload)) {
         state.error = action.payload;
       }
+    });
+
+    // when logout reset
+    builder.addCase(authLogout, (state) => {
+      state.itemsId = [];
+      state.productsFullInfo = [];
     });
   },
 });
 
 export { actLikeToggle, actGetWishlist };
-export const { cleanUpWishlistProductsFullInfo } = wishlistSlice.actions;
+export const { cleanWishlistProductsFullInfo } = wishlistSlice.actions;
 export default wishlistSlice.reducer;
